@@ -9,6 +9,60 @@ const tasks = [
     startTime: "06:00",
     endTime: "06:45",
   },
+  {
+    name: "Shower, breakfast, get dressed",
+    description: "Get ready for the day. Try to read the news.",
+    startTime: "06:45",
+    endTime: "07:30",
+  },
+  {
+    name: "Airbnb research + house flipping",
+    description: "Check out the Airbnb market in the area.",
+    startTime: "07:30",
+    endTime: "08:00",
+  },
+  {
+    name: "VecinoMarket app development",
+    description: "Continue working on the VecinoMarket app.",
+    startTime: "08:00",
+    endTime: "09:20",
+  },
+  {
+    name: "Cox deep work",
+    description: "Continue working on the Cox app.",
+    startTime: "09:20",
+    endTime: "10:00",
+  },
+  {
+    name: "COX standup",
+    description: "Standup meeting with the team.",
+    startTime: "10:00",
+    endTime: "11:00",
+  },
+  {
+    name: "Banqi.co development",
+    description: "Continue working on the Banqi.co app.",
+    startTime: "11:00",
+    endTime: "12:00",
+  },
+  {
+    name: "Lunch break",
+    description: "Take a break and eat lunch.",
+    startTime: "12:00",
+    endTime: "13:00",
+  },
+  {
+    name: "NestJs training",
+    description: "Continue working on the NestJs training.",
+    startTime: "13:00",
+    endTime: "14:00",
+  },
+  {
+    name: "Job hunting + networking",
+    description: "let's get a job!",
+    startTime: "17:57",
+    endTime: "18:00",
+  },
 ];
 
 function App() {

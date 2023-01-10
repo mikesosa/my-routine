@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 const useAudio = (url: string) => {
   const [relativeEndDate, setRelativeEndDate] = useState(false); // for demo only
@@ -18,6 +18,7 @@ const useAudio = (url: string) => {
         audio.removeEventListener("canplaythrough", onPlay);
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [play, relativeEndDate]);
 
   const onStart = () => {

@@ -58,10 +58,10 @@ const tasks = [
     endTime: "14:00",
   },
   {
-    name: "Job hunting + networking",
-    description: "let's get a job!",
-    startTime: "17:57",
-    endTime: "18:00",
+    name: "Personal website development",
+    description: "improve the personal website.",
+    startTime: "14:00",
+    endTime: "15:00",
   },
 ];
 

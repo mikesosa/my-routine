@@ -44,12 +44,12 @@ export default function TaskItem({ task }: Props) {
   const isActive = isTaskActive(task);
 
   const checkPlaySound = () => {
-    console.log("checkPlaySound", isActive);
+    // console.log("checkPlaySound", isActive);
     // const currentDate = new Date();
     // const startDate = createDateTime(task.startTime);
     // const diff = diffMinutes(currentDate, startDate);
     // if (!diff && isActive) {
-    // toggle();
+    toggle();
     // }
   };
 

@@ -10,9 +10,10 @@ export type Task = {
 
 type Props = {
   tasks: Task[];
+  handleDelete: (task: Task) => void;
 };
 
-export default function TasksList({ tasks }: Props) {
+export default function TasksList({ tasks, handleDelete }: Props) {
   const executeScroll = () => {
     const element = document.getElementById("active-task-task");
     if (element) element.scrollIntoView({ behavior: "smooth" });
@@ -25,7 +26,7 @@ export default function TasksList({ tasks }: Props) {
   return (
     <ul className="divide-y divide-gray-200 border-b border-gray-200">
       {tasks.map((task, index) => (
-        <TaskItem key={index} task={task} />
+        <TaskItem key={index} task={task} handleDelete={handleDelete} />
       ))}
     </ul>
   );

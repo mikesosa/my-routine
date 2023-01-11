@@ -1,4 +1,8 @@
 /*global chrome*/
+import { Dialog } from "@headlessui/react";
+import { TrashIcon, ExclamationIcon } from "@heroicons/react/solid";
+import { useState } from "react";
+import Modal from "./components/Modal";
 import RadialProgressIndicator from "./components/RadialProgressIndicator";
 import useAudio from "./hooks/useAudio";
 import { Task } from "./TasksList";
@@ -6,6 +10,7 @@ import { classNames } from "./utils/classNames";
 
 type Props = {
   task: Task;
+  handleDelete: (task: Task) => void;
 };
 
 function diffMinutes(dt2: Date, dt1: Date) {
@@ -37,7 +42,7 @@ const getPercentage = (task: Task) => {
   return Math.round(percentage);
 };
 
-export default function TaskItem({ task }: Props) {
+export default function TaskItem({ task, handleDelete }: Props) {
   const [toggle] = useAudio(
     "https://upload.wikimedia.org/wikipedia/commons/5/55/En-us-house-noun.ogg"
   );
@@ -75,11 +80,10 @@ export default function TaskItem({ task }: Props) {
       id={isActive ? "active-task" : ""}
       className={classNames(
         isActive ? "hover:bg-gray-50" : " bg-gray-300",
-        "relative py-5 pl-4 pr-6 sm:py-6 sm:pl-6 lg:pl-8 xl:pl-6 cursor-pointer"
+        "relative py-5 pl-4 pr-6 sm:py-6 sm:pl-6 lg:pl-8 xl:pl-6"
       )}
     >
       <div className="flex items-center justify-between space-x-4">
-        {/* Repo name and link */}
         <div className="min-w-0 space-y-3">
           <div className="flex items-center space-x-3">
             <span
@@ -114,11 +118,16 @@ export default function TaskItem({ task }: Props) {
             <span className="truncate text-sm font-medium text-gray-500 group-hover:text-gray-900">
               {task.description}
             </span>
-            <button onClick={handleClick}>console.error</button>;
           </div>
         </div>
-        <div className="font-medium flex-shrink-0 text-sm">
-          {task.startTime}
+        <div className="flex flex-col items-center">
+          <p className="font-medium text-sm">{task.startTime}</p>
+          <div
+            className="mt-5 cursor-pointer z-10"
+            onClick={() => handleDelete(task)}
+          >
+            <TrashIcon className="h-5 w-5 text-gray-400" />
+          </div>
         </div>
       </div>
     </li>

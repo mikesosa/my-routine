@@ -1,8 +1,8 @@
+/*global chrome*/
 import RadialProgressIndicator from "./components/RadialProgressIndicator";
 import useAudio from "./hooks/useAudio";
 import { Task } from "./TasksList";
 import { classNames } from "./utils/classNames";
-import { useEffect } from "react";
 
 type Props = {
   task: Task;
@@ -11,7 +11,7 @@ type Props = {
 function diffMinutes(dt2: Date, dt1: Date) {
   let diff = (dt2.getTime() - dt1.getTime()) / 1000;
   diff /= 60;
-  return Math.abs(Math.round(diff));
+  return Math.round(diff);
 }
 
 const createDateTime = (time: string) => {
@@ -49,19 +49,26 @@ export default function TaskItem({ task }: Props) {
     // const startDate = createDateTime(task.startTime);
     // const diff = diffMinutes(currentDate, startDate);
     // if (!diff && isActive) {
-    toggle();
+    // toggle();
     // }
   };
 
-  useEffect(() => {
-    if (isActive) {
-      const timer = setInterval(() => {
-        checkPlaySound();
-      }, 3000);
-      return () => clearInterval(timer);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   if (isActive) {
+  //     const timer = setInterval(() => {
+  //       checkPlaySound();
+  //     }, 3000);
+  //     return () => clearInterval(timer);
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
+
+  const handleClick = () => {
+    chrome.runtime.sendMessage({
+      action: "updateIcon",
+      value: false,
+    });
+  };
 
   return (
     <li
@@ -107,6 +114,7 @@ export default function TaskItem({ task }: Props) {
             <span className="truncate text-sm font-medium text-gray-500 group-hover:text-gray-900">
               {task.description}
             </span>
+            <button onClick={handleClick}>console.error</button>;
           </div>
         </div>
         <div className="font-medium flex-shrink-0 text-sm">
